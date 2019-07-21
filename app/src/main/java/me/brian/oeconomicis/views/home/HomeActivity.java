@@ -14,6 +14,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
 
+import javax.inject.Inject;
+
 import me.brian.oeconomicis.R;
 import me.brian.oeconomicis.views.BaseActivity;
 
@@ -23,6 +25,9 @@ public class HomeActivity extends BaseActivity
     public static Intent getCallIntent(Context context) {
         return new Intent(context, HomeActivity.class);
     }
+
+    @Inject
+    HomePresenter homePresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
