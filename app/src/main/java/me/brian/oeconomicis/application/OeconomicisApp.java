@@ -5,7 +5,6 @@ import android.app.Application;
 
 import javax.inject.Inject;
 
-import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.HasActivityInjector;
 import me.brian.oeconomicis.di.components.DaggerAppComponent;
@@ -16,14 +15,13 @@ public class OeconomicisApp extends Application implements HasActivityInjector {
     DispatchingAndroidInjector<Activity> dispatchingAndroidInjector;
 
     @Override
-    public AndroidInjector<Activity> activityInjector() {
+    public DispatchingAndroidInjector<Activity> activityInjector() {
         return dispatchingAndroidInjector;
     }
 
     @Override
     public void onCreate() {
         super.onCreate();
-
         DaggerAppComponent.builder()
                 .application(this)
                 .build()

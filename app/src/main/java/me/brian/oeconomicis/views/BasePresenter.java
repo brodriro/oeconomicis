@@ -10,7 +10,7 @@ public abstract class BasePresenter<T extends BasePresenter.View> {
         this.view = view;
     }
 
-    protected interface View extends ScopeProvider {
+    public interface View extends ScopeProvider {
     }
 
     public T getView() {

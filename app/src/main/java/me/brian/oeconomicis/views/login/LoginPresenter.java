@@ -2,16 +2,19 @@ package me.brian.oeconomicis.views.login;
 
 import javax.inject.Inject;
 
+import dagger.Reusable;
 import me.brian.oeconomicis.views.BasePresenter;
 
-public class LoginPresenter extends BasePresenter {
-    public interface View {
-
-    }
+@Reusable
+public class LoginPresenter extends BasePresenter<LoginPresenter.View> {
 
     @Inject
-    public LoginPresenter(BasePresenter.View view) {
+    public LoginPresenter(View view) {
         super(view);
+    }
+
+    public interface View extends BasePresenter.View {
+
     }
 
 
