@@ -2,7 +2,7 @@
     <string name="app_name">oeconomicis</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_title">Brian Rodriguez</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
@@ -16,4 +16,11 @@
     <string name="login_user">User</string>
     <string name="login_password">Password</string>
     <string name="login">Login</string>
+    <string name="menu_categories">Categories</string>
+    <string name="total_spend">Total Spend</string>
+    <string name="total_spend_number">$ 1.560.00</string>
+    <string name="category_foods">Foods</string>
+    <string name="category_concept">McDonals</string>
+    <string name="last_transactions">LATEST TRANSACTION</string>
+    <string name="history_transaction">History</string>
 </resources>

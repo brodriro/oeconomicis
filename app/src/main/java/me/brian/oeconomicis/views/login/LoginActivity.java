@@ -1,14 +1,16 @@
 package me.brian.oeconomicis.views.login;
 
 import android.os.Bundle;
-import android.util.Log;
+import android.view.View;
 
 import javax.inject.Inject;
 
-import me.brian.domain.entities.User;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import me.brian.domain.repositories.UserDatabaseRepository;
 import me.brian.oeconomicis.R;
 import me.brian.oeconomicis.views.BaseActivity;
+import me.brian.oeconomicis.views.home.HomeActivity;
 
 public class LoginActivity extends BaseActivity implements LoginPresenter.View {
 
@@ -24,7 +26,8 @@ public class LoginActivity extends BaseActivity implements LoginPresenter.View {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        try {
+        ButterKnife.bind(this);
+        /*try {
             boolean isSaved = userLocalRepository.saveUser(new User(1, "brian", "b.rodrig", "123456"));
             if (isSaved) {
                 User user = userLocalRepository.getUser();
@@ -32,6 +35,12 @@ public class LoginActivity extends BaseActivity implements LoginPresenter.View {
             }
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
+    }
+
+    @OnClick(R.id.buttonLogin)
+    public void onLoginClick(View v) {
+        startActivity(HomeActivity.getCallIntent(this));
+        finish();
     }
 }

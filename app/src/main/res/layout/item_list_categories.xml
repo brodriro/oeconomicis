@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout_category_container"
+    android:layout_margin="8dp"
+    android:layout_width="165dp"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="@color/colorAccentSecond"
+    app:cardCornerRadius="10dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/raleway_light"
+            android:textSize="@dimen/category_title_size"
+            android:textColor="@color/colorWhite"
+            android:text="@string/category_foods"/>
+        <TextView
+            android:id="@+id/item_category_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorWhite"
+            android:fontFamily="@font/raleway_bold"
+            android:textSize="@dimen/category_amount_size"
+            android:text="@string/total_spend_number"/>
+        <TextView
+            android:layout_marginTop="8dp"
+            android:id="@+id/item_category_last_concept"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/raleway_light"
+            android:textSize="@dimen/category_title_size"
+            android:textColor="@color/colorWhite"
+            android:text="@string/category_concept"/>
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>
