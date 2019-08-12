@@ -9,9 +9,10 @@ import dagger.Component;
 import dagger.android.AndroidInjector;
 import me.brian.oeconomicis.application.OeconomicisApp;
 import me.brian.oeconomicis.di.modules.ActivityBindingModule;
+import me.brian.oeconomicis.di.modules.AppModule;
 
 @Singleton
-@Component(modules = {ActivityBindingModule.class,})
+@Component(modules = {ActivityBindingModule.class, AppModule.class})
 public interface AppComponent extends AndroidInjector<OeconomicisApp> {
 
     @Component.Builder
@@ -23,5 +24,4 @@ public interface AppComponent extends AndroidInjector<OeconomicisApp> {
         AppComponent build();
     }
 
-    //void inject(MEAApplication meaApplication);
 }
