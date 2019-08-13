@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -17,8 +18,10 @@ import com.google.android.material.navigation.NavigationView;
 import javax.inject.Inject;
 
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import me.brian.oeconomicis.R;
 import me.brian.oeconomicis.views.BaseActivity;
+import me.brian.oeconomicis.views.transaction.TransactionActivity;
 
 public class HomeActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener, HomePresenter.View {
@@ -81,5 +84,10 @@ public class HomeActivity extends BaseActivity
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @OnClick(R.id.btn_new_amount)
+    public void clickNewAssignment(View v) {
+        startActivity(TransactionActivity.getCallIntent(this));
     }
 }

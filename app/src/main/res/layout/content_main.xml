@@ -11,7 +11,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="144dp"
+        android:layout_height="@dimen/layout_background_height"
         android:background="@drawable/background_layout_invert"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,7 +28,7 @@
             android:fontFamily="@font/raleway_bold"
             android:text="@string/total_spend"
             android:textColor="@color/colorWhite"
-            android:textSize="18sp"
+            android:textSize="@dimen/text_size_total_spend"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -43,7 +43,7 @@
             android:fontFamily="@font/raleway_bold"
             android:text="@string/total_spend_number"
             android:textColor="@color/colorWhite"
-            android:textSize="24sp"
+            android:textSize="@dimen/text_size_amount"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView" />

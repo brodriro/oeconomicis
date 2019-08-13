@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">oeconomicis</string>
+    <string name="app_name">Economicis</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Brian Rodriguez</string>
@@ -23,4 +23,9 @@
     <string name="category_concept">McDonals</string>
     <string name="last_transactions">LATEST TRANSACTION</string>
     <string name="history_transaction">History</string>
+    <string name="title_activity_transaction">New Transaction</string>
+    <string name="new_assignment">New Assignment</string>
+    <string name="category">Category</string>
+    <string name="description">Description</string>
+    <string name="save_transaction">SAVE TRANSACTION</string>
 </resources>
