@@ -28,4 +28,15 @@
     <string name="category">Category</string>
     <string name="description">Description</string>
     <string name="save_transaction">SAVE TRANSACTION</string>
+    <string name="title_activity_register">Register</string>
+    <string name="personal_data">Personal Information</string>
+    <string name="person_name">Name</string>
+    <string name="last_name">Last name</string>
+    <string name="account">Account</string>
+    <string name="person_username">Username</string>
+    <string name="age">Age</string>
+    <string name="password">Password</string>
+    <string name="password_repeat">Repeat Password</string>
+    <string name="create_account">Create Account</string>
+    <string name="sign_up">Sign up</string>
 </resources>

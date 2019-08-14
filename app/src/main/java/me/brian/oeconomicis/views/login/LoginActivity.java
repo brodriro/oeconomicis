@@ -11,6 +11,7 @@ import me.brian.domain.repositories.UserDatabaseRepository;
 import me.brian.oeconomicis.R;
 import me.brian.oeconomicis.views.BaseActivity;
 import me.brian.oeconomicis.views.home.HomeActivity;
+import me.brian.oeconomicis.views.register.RegisterActivity;
 
 public class LoginActivity extends BaseActivity implements LoginPresenter.View {
 
@@ -41,6 +42,12 @@ public class LoginActivity extends BaseActivity implements LoginPresenter.View {
     @OnClick(R.id.buttonLogin)
     public void onLoginClick(View v) {
         startActivity(HomeActivity.getCallIntent(this));
+        finish();
+    }
+
+    @OnClick(R.id.login_signUp)
+    public void onSignUpClick(View v) {
+        startActivity(RegisterActivity.getCallIntent(this));
         finish();
     }
 }

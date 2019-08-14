@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".views.register.RegisterActivity"
+    tools:showIn="@layout/activity_register"
+    android:background="@color/colorBackgroundList"
+    android:padding="@dimen/activity_horizontal_margin">
+
+    <LinearLayout
+        android:id="@+id/register_layout_personal_information"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/activity_horizontal_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/colorWhite">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/raleway_bold"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="@dimen/generic_title_text_size"
+            android:text="@string/personal_data"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/raleway_medium"
+            android:textColor="@color/colorSecondaryText"
+            android:textSize="@dimen/generic_input_title_text_size"
+            android:layout_marginTop="16dp"
+            android:text="@string/person_name"/>
+        <EditText
+            android:id="@+id/register_input_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="@dimen/text_size_input"
+            android:fontFamily="@font/raleway_medium"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:inputType="text"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/raleway_medium"
+            android:textSize="@dimen/generic_input_title_text_size"
+            android:text="@string/last_name"
+            android:layout_marginTop="8dp"
+            />
+        <EditText
+            android:id="@+id/register_input_lastname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/raleway_medium"
+            android:textSize="@dimen/text_size_input"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:inputType="text"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/raleway_medium"
+            android:textSize="@dimen/generic_input_title_text_size"
+            android:text="@string/age"
+            android:layout_marginTop="8dp"
+            />
+        <EditText
+            android:id="@+id/register_input_age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/raleway_medium"
+            android:textSize="@dimen/text_size_input"
+            android:inputType="number"
+            android:maxLines="1"
+            android:maxLength="2"
+            android:minEms="4"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:background="@color/colorWhite"
+        android:orientation="vertical"
+        android:padding="@dimen/activity_vertical_margin"
+        app:layout_constraintTop_toBottomOf="@id/register_layout_personal_information"
+        tools:layout_editor_absoluteX="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/raleway_bold"
+            android:text="@string/account"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="@dimen/generic_title_text_size" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/raleway_medium"
+            android:text="@string/person_username"
+            android:textColor="@color/colorSecondaryText"
+            android:textSize="@dimen/generic_input_title_text_size" />
+
+        <EditText
+            android:id="@+id/register_input_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/raleway_medium"
+            android:inputType="text"
+            android:maxLines="1"
+            android:minEms="6"
+            android:textSize="@dimen/text_size_input" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/raleway_medium"
+            android:text="@string/password"
+            android:textSize="@dimen/generic_input_title_text_size" />
+
+        <EditText
+            android:id="@+id/register_input_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/raleway_medium"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:minEms="6"
+            android:textSize="@dimen/text_size_input" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/raleway_medium"
+            android:text="@string/password_repeat"
+            android:textSize="@dimen/generic_input_title_text_size" />
+
+        <EditText
+            android:id="@+id/register_input_pwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/raleway_medium"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:minEms="6"
+            android:textSize="@dimen/text_size_input" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/register_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/background_button"
+        android:fontFamily="@font/raleway_bold"
+        android:text="@string/create_account"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,6 +11,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".views.register.RegisterActivity"
+            android:label="@string/title_activity_register"
+            android:parentActivityName=".views.login.LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="me.brian.oeconomicis.views.login.LoginActivity" />
+        </activity>
+        <activity
             android:name=".views.transaction.TransactionActivity"
             android:label="@string/title_activity_transaction"
             android:parentActivityName=".views.home.HomeActivity"

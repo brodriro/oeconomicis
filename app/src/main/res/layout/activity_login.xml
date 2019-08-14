@@ -70,6 +70,16 @@
             android:background="@drawable/background_button"
             android:textColor="@color/colorWhite"
             android:text="@string/login" />
+
+        <TextView
+            android:id="@+id/login_signUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:fontFamily="@font/raleway_light"
+            android:textSize="@dimen/login_register_text_size"
+            android:padding="@dimen/margin_input_login"
+            android:text="@string/sign_up"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
