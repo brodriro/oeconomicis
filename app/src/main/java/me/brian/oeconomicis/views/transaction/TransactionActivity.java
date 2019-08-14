@@ -7,13 +7,19 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import me.brian.oeconomicis.R;
+import javax.inject.Inject;
 
-public class TransactionActivity extends AppCompatActivity {
+import me.brian.oeconomicis.R;
+import me.brian.oeconomicis.views.BaseActivity;
+
+public class TransactionActivity extends BaseActivity implements TransactionPresenter.View{
 
     public static Intent getCallIntent(Context context) {
         return new Intent(context, TransactionActivity.class);
     }
+
+    @Inject
+    TransactionPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

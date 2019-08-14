@@ -12,15 +12,20 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
 
+import javax.inject.Inject;
+
 import me.brian.oeconomicis.R;
 import me.brian.oeconomicis.views.BaseActivity;
 import me.brian.oeconomicis.views.login.LoginActivity;
 
-public class RegisterActivity  extends BaseActivity {
+public class RegisterActivity  extends BaseActivity implements RegisterPresenter.View{
 
     public static Intent getCallIntent(Context context) {
        return new Intent(context, RegisterActivity.class);
     }
+
+    @Inject
+    RegisterPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
