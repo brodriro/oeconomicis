@@ -39,4 +39,9 @@
     <string name="password_repeat">Repeat Password</string>
     <string name="create_account">Create Account</string>
     <string name="sign_up">Sign up</string>
+    <string name="password_not_equals">Passwords do not match</string>
+    <string name="complete_all_fields">Please, complete all fields.</string>
+    <string name="username_length">Username needs 6 characters</string>
+    <string name="password_length">Password needs 6 characters</string>
+    <string name="register_success">Successful registration.</string>
 </resources>

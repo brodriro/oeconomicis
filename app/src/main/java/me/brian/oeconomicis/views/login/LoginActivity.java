@@ -48,6 +48,5 @@ public class LoginActivity extends BaseActivity implements LoginPresenter.View {
     @OnClick(R.id.login_signUp)
     public void onSignUpClick(View v) {
         startActivity(RegisterActivity.getCallIntent(this));
-        finish();
     }
 }

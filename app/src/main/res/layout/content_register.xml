@@ -60,6 +60,7 @@
             android:id="@+id/register_input_lastname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimaryText"
             android:fontFamily="@font/raleway_medium"
             android:textSize="@dimen/text_size_input"
             android:maxLines="1"
@@ -78,6 +79,7 @@
             android:id="@+id/register_input_age"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimaryText"
             android:fontFamily="@font/raleway_medium"
             android:textSize="@dimen/text_size_input"
             android:inputType="number"
@@ -119,9 +121,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/raleway_medium"
+            android:textColor="@color/colorPrimaryText"
             android:inputType="text"
             android:maxLines="1"
-            android:minEms="6"
             android:textSize="@dimen/text_size_input" />
 
         <TextView
@@ -136,10 +138,10 @@
             android:id="@+id/register_input_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimaryText"
             android:fontFamily="@font/raleway_medium"
             android:inputType="textPassword"
             android:maxLines="1"
-            android:minEms="6"
             android:textSize="@dimen/text_size_input" />
 
         <TextView
@@ -155,9 +157,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/raleway_medium"
+            android:textColor="@color/colorPrimaryText"
             android:inputType="textPassword"
             android:maxLines="1"
-            android:minEms="6"
             android:textSize="@dimen/text_size_input" />
     </LinearLayout>
 
