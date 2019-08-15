@@ -50,6 +50,16 @@ public class RegisterActivity extends BaseActivity implements RegisterPresenter.
 
         ButterKnife.bind(this);
         initToolbar();
+        mockFields();
+    }
+
+    private void mockFields() {
+        personName.setText("Brian");
+        personLastName.setText("Rodriguez Romero");
+        personAge.setText("26");
+        username.setText("xaiovz");
+        password.setText("123456");
+        pwd.setText("123456");
     }
 
     private void initToolbar() {

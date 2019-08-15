@@ -44,4 +44,6 @@
     <string name="username_length">Username needs 6 characters</string>
     <string name="password_length">Password needs 6 characters</string>
     <string name="register_success">Successful registration.</string>
+    <string name="user_already_exist">User already existing.</string>
+    <string name="sign_up_error">Error creating user.</string>
 </resources>

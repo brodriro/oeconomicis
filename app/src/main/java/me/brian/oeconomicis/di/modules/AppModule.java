@@ -23,8 +23,8 @@ public class AppModule {
 
     @Provides
     @Singleton
-    UserDatabaseRepository providesUserDatabaseRepository(UserLocalRepository userLocalRepository) {
-        return userLocalRepository;
+    UserDatabaseRepository providesUserDatabaseRepository(UserLocalRepository loginLocalRepository) {
+        return loginLocalRepository;
     }
 
     @Singleton

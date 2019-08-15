@@ -3,17 +3,44 @@ package me.brian.domain.entities;
 public class User {
     private int id;
     private String name;
+    private String lastname;
+    private String age;
     private String username;
     private String password;
 
     public User() {
     }
 
-    public User(int id, String name, String username, String password) {
-        this.id = id;
+    public User( String name, String lastname, String age, String username, String password) {
         this.name = name;
+        this.lastname = lastname;
+        this.age = age;
         this.username = username;
         this.password = password;
+    }
+    public User(int id, String name, String lastname, String age, String username, String password) {
+        this.id = id;
+        this.name = name;
+        this.lastname = lastname;
+        this.age = age;
+        this.username = username;
+        this.password = password;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public String getAge() {
+        return age;
     }
 
     public int getId() {

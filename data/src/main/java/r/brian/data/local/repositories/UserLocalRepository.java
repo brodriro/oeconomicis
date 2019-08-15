@@ -2,6 +2,7 @@ package r.brian.data.local.repositories;
 
 import javax.inject.Inject;
 
+import io.reactivex.Single;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 import me.brian.domain.entities.User;
@@ -18,37 +19,44 @@ public class UserLocalRepository implements UserDatabaseRepository {
     }
 
     @Override
-    public User getUser() throws Exception {
-        Realm realm = null;
-        try {
-            realm = Realm.getInstance(realmConfiguration);
-            UserDatabase userEntity = realm.where(UserDatabase.class).findFirst();
-            return userEntity != null ? userEntity.toUser() : null;
-        } catch (Exception ex) {
-            throw ex;
-        } finally {
-            if (realm != null)
-                realm.close();
+    public Single<Boolean> findUser(String username) throws Exception {
+        try (Realm realm = Realm.getInstance(realmConfiguration)) {
+            UserDatabase result = realm.where(UserDatabase.class).equalTo("username", username).findFirst();
+            realm.close();
+            return Single.just(result != null);
         }
     }
 
     @Override
-    public Boolean saveUser(User user) throws Exception {
+    public User loginUser(String username, String password) throws Exception {
+        return null;
+    }
+
+    @Override
+    public Single<User> getUser(User user) throws Exception {
+        try (Realm realm = Realm.getInstance(realmConfiguration)) {
+            UserDatabase userEntity = realm.where(UserDatabase.class).equalTo("username", user.getUsername()).findFirst();
+            if (userEntity == null) return null;
+            return Single.just(userEntity.toUser());
+        }
+    }
+
+    @Override
+    public Single<User> createUser(User user) throws Exception {
         try (Realm realmInstance = Realm.getInstance(realmConfiguration)) {
+            Number id = realmInstance.where(UserDatabase.class).max("id");
+            int nextId = (id != null) ? id.intValue() + 1 : 0;
+            user.setId(nextId);
             realmInstance.executeTransaction(realm -> realm.insertOrUpdate(new UserDatabase(user)));
-            return true;
-        } catch (Exception ex) {
-            throw ex;
+            return Single.just(user);
         }
     }
 
     @Override
-    public Boolean deleteAllUser() throws Exception {
+    public boolean deleteAllUser() throws Exception {
         try (Realm realmInstance = Realm.getInstance(realmConfiguration)) {
             realmInstance.executeTransaction(realm -> realm.delete(UserDatabase.class));
             return true;
-        } catch (Exception ex) {
-            throw ex;
         }
     }
 }

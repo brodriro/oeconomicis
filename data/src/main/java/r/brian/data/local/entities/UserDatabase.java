@@ -8,15 +8,19 @@ public class UserDatabase extends RealmObject {
     @PrimaryKey
     private int id;
     private String name;
+    private String lastname;
+    private String age;
     private String username;
     private String password;
 
     public UserDatabase() {
     }
 
-    public UserDatabase(int id, String name, String username, String password) {
+    public UserDatabase(int id, String name, String lastname, String age, String username, String password) {
         this.id = id;
         this.name = name;
+        this.lastname = lastname;
+        this.age = age;
         this.username = username;
         this.password = password;
     }
@@ -34,7 +38,25 @@ public class UserDatabase extends RealmObject {
         user.setName(this.getName());
         user.setPassword(this.getPassword());
         user.setUsername(this.getUsername());
+        user.setLastname(this.getLastname());
+        user.setAge(this.getAge());
         return user;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public String getAge() {
+        return age;
     }
 
     public int getId() {
