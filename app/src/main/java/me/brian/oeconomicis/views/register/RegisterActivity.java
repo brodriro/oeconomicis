@@ -18,6 +18,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import me.brian.oeconomicis.R;
 import me.brian.oeconomicis.views.BaseActivity;
+import me.brian.oeconomicis.views.home.HomeActivity;
 
 public class RegisterActivity extends BaseActivity implements RegisterPresenter.View {
 
@@ -50,16 +51,6 @@ public class RegisterActivity extends BaseActivity implements RegisterPresenter.
 
         ButterKnife.bind(this);
         initToolbar();
-        mockFields();
-    }
-
-    private void mockFields() {
-        personName.setText("Brian");
-        personLastName.setText("Rodriguez Romero");
-        personAge.setText("26");
-        username.setText("xaiovz");
-        password.setText("123456");
-        pwd.setText("123456");
     }
 
     private void initToolbar() {
@@ -101,6 +92,11 @@ public class RegisterActivity extends BaseActivity implements RegisterPresenter.
     @Override
     public void onSigUpSuccess(String message) {
         Snackbar.make(registerButton, message, Snackbar.LENGTH_SHORT).show();
+        startActivity(HomeActivity.getCallIntent(this)
+                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|
+                        Intent.FLAG_ACTIVITY_CLEAR_TASK |
+                        Intent.FLAG_ACTIVITY_NEW_TASK));
+        finish();
     }
 
 
