@@ -74,4 +74,10 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    @Override
+    public String toString() {
+        return String.format("ID:%s, FullName:%s, Username:%s, Age:%s, Password:%s",
+                getId(), getName() + " " +getLastname(),getUsername(), getAge(), getPassword());
+    }
 }

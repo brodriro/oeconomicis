@@ -7,7 +7,7 @@ public interface UserDatabaseRepository {
 
     Single<Boolean> findUser(String username) throws Exception;
 
-    User loginUser(String username, String password) throws Exception;
+    Single<User> loginUser(String username, String password) throws Exception;
 
     Single<User> getUser(User user) throws Exception;
 

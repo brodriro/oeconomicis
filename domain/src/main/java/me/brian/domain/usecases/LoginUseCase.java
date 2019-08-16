@@ -31,8 +31,11 @@ public class LoginUseCase {
         });
     }
 
-    public Single<User> getUser(User user) throws Exception {
-        return userDatabaseRepository.getUser(user);
+    public Single<User> loginUser(String username, String password) throws Exception{
+        return userDatabaseRepository.loginUser(username, password).map(user -> {
+            if (user != null) currentUser = user;
+            return user;
+        });
     }
 
     public User getCurrentUser() {

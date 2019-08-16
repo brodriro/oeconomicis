@@ -22,14 +22,20 @@ public class UserLocalRepository implements UserDatabaseRepository {
     public Single<Boolean> findUser(String username) throws Exception {
         try (Realm realm = Realm.getInstance(realmConfiguration)) {
             UserDatabase result = realm.where(UserDatabase.class).equalTo("username", username).findFirst();
-            realm.close();
             return Single.just(result != null);
         }
     }
 
     @Override
-    public User loginUser(String username, String password) throws Exception {
-        return null;
+    public Single<User> loginUser(String username, String password) throws Exception {
+        try (Realm realm = Realm.getInstance(realmConfiguration)) {
+            UserDatabase userDatabase = realm.where(UserDatabase.class)
+                    .equalTo("username", username)
+                    .equalTo("password", password)
+                    .findFirst();
+            if (userDatabase == null) return null;
+            return Single.just(userDatabase.toUser());
+        }
     }
 
     @Override

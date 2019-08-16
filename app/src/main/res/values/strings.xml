@@ -2,7 +2,7 @@
     <string name="app_name">Economicis</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Brian Rodriguez</string>
+    <string name="nav_header_title">Username</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
@@ -46,4 +46,8 @@
     <string name="register_success">Successful registration.</string>
     <string name="user_already_exist">User already existing.</string>
     <string name="sign_up_error">Error creating user.</string>
+    <string name="user_doesnt_exist">Username does not exist.</string>
+    <string name="login_error">Error, try again later.</string>
+    <string name="menu_new_category">New Category</string>
+    <string name="menu_new_assignment">New Assigment</string>
 </resources>
