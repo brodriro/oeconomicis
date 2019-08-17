@@ -34,6 +34,14 @@ public class LoginActivity extends BaseActivity implements LoginPresenter.View {
 
         ButterKnife.bind(this);
         presenter.start();
+
+        mockUser();
+    }
+
+    private void mockUser() {
+        inputUsername.setText("xaiovz");
+        inputPassword.setText("123456");
+
     }
 
     @OnClick(R.id.buttonLogin)

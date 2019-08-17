@@ -11,4 +11,6 @@
     <color name="colorDivider">#BDBDBD</color>
     <color name="colorWhite">#FFF</color>
     <color name="colorBackgroundList">#f3f2fa</color>
+
+    <color name="black_overlay">#66000000</color>
 </resources>

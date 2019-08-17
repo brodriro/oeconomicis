@@ -10,7 +10,9 @@ import dagger.Module;
 import dagger.Provides;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
+import me.brian.domain.repositories.CategoryDatabaseRepository;
 import me.brian.domain.repositories.UserDatabaseRepository;
+import r.brian.data.local.repositories.CategoryLocalRepository;
 import r.brian.data.local.repositories.UserLocalRepository;
 
 @Module//(includes = AndroidInjectionModule.class)
@@ -25,6 +27,12 @@ public class AppModule {
     @Singleton
     UserDatabaseRepository providesUserDatabaseRepository(UserLocalRepository loginLocalRepository) {
         return loginLocalRepository;
+    }
+
+    @Provides
+    @Singleton
+    CategoryDatabaseRepository proCategoryDatabaseRepository(CategoryLocalRepository categoryLocalRepository) {
+        return categoryLocalRepository;
     }
 
     @Singleton

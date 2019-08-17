@@ -3,6 +3,7 @@ package me.brian.oeconomicis.di.modules;
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
 import dagger.android.support.AndroidSupportInjectionModule;
+import me.brian.oeconomicis.views.category.CategoryActivity;
 import me.brian.oeconomicis.views.home.HomeActivity;
 import me.brian.oeconomicis.views.login.LoginActivity;
 import me.brian.oeconomicis.views.register.RegisterActivity;
@@ -22,4 +23,7 @@ public abstract class ActivityBindingModule {
 
     @ContributesAndroidInjector(modules = {PresenterViewModule.class})
     abstract TransactionActivity transactionActivityInjector();
+
+    @ContributesAndroidInjector(modules = {PresenterViewModule.class})
+    abstract CategoryActivity categoryActivityInjector();
 }

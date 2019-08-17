@@ -18,7 +18,7 @@
     <string name="login">Login</string>
     <string name="menu_categories">Categories</string>
     <string name="total_spend">Total Spend</string>
-    <string name="total_spend_number">$ 1.560.00</string>
+    <string name="total_spend_number">00.00</string>
     <string name="category_foods">Foods</string>
     <string name="category_concept">McDonals</string>
     <string name="last_transactions">LATEST TRANSACTION</string>
@@ -50,4 +50,10 @@
     <string name="login_error">Error, try again later.</string>
     <string name="menu_new_category">New Category</string>
     <string name="menu_new_assignment">New Assigment</string>
+    <string name="error">An error occurred.</string>
+    <string name="title_activity_category">CategoryActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="create_category">Create category</string>
+    <string name="new_category">New Category</string>
 </resources>

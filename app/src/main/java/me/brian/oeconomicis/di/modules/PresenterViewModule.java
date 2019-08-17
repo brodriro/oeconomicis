@@ -3,6 +3,8 @@ package me.brian.oeconomicis.di.modules;
 
 import dagger.Binds;
 import dagger.Module;
+import me.brian.oeconomicis.views.category.CategoryActivity;
+import me.brian.oeconomicis.views.category.CategoryPresenter;
 import me.brian.oeconomicis.views.home.HomeActivity;
 import me.brian.oeconomicis.views.home.HomePresenter;
 import me.brian.oeconomicis.views.login.LoginActivity;
@@ -26,4 +28,7 @@ public abstract class PresenterViewModule {
 
     @Binds
     abstract TransactionPresenter.View provideTransactionView(TransactionActivity transactionActivity);
+
+    @Binds
+    abstract CategoryPresenter.View provideCategoryView(CategoryActivity categoryActivity);
 }

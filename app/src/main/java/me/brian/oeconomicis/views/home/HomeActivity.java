@@ -24,6 +24,7 @@ import butterknife.OnClick;
 import me.brian.domain.entities.User;
 import me.brian.oeconomicis.R;
 import me.brian.oeconomicis.views.BaseActivity;
+import me.brian.oeconomicis.views.category.CategoryActivity;
 import me.brian.oeconomicis.views.transaction.TransactionActivity;
 
 public class HomeActivity extends BaseActivity
@@ -84,7 +85,7 @@ public class HomeActivity extends BaseActivity
         if (id == R.id.nav_home) {
             // Handle the camera action
         } else if (id == R.id.nav_new_category) {
-
+            startActivity(CategoryActivity.getCallIntent(this));
         } else if (id == R.id.nav_assignment) {
             startActivity(TransactionActivity.getCallIntent(this));
         }
