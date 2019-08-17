@@ -60,6 +60,7 @@ public class CategoryActivity extends BaseActivity implements CategoryPresenter.
 
     @Override
     public void onSuccess(List<Category> categories) {
+        setResult(RESULT_OK);
         finish();
     }
 }

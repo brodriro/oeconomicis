@@ -1,10 +1,12 @@
 package me.brian.oeconomicis.views.transaction;
 
+import android.content.Context;
 import android.util.Log;
 
 import com.uber.autodispose.AutoDispose;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -13,7 +15,11 @@ import dagger.Reusable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 import me.brian.domain.entities.Category;
+import me.brian.domain.entities.History;
 import me.brian.domain.usecases.CategoryUseCase;
+import me.brian.domain.usecases.LoginUseCase;
+import me.brian.domain.usecases.TransactionUseCase;
+import me.brian.oeconomicis.R;
 import me.brian.oeconomicis.views.BasePresenter;
 
 @Reusable
@@ -28,6 +34,14 @@ public class TransactionPresenter extends BasePresenter<TransactionPresenter.Vie
 
     @Inject
     CategoryUseCase categoryUseCase;
+    @Inject
+    TransactionUseCase transactionUseCase;
+    @Inject
+    LoginUseCase loginUseCase;
+    @Inject
+    Context context;
+
+    private List<Category> list;
 
     public void start() {
         try {
@@ -37,6 +51,7 @@ public class TransactionPresenter extends BasePresenter<TransactionPresenter.Vie
                     .as(AutoDispose.autoDisposable(getView()))
                     .subscribe(categories -> {
                         if (categories == null) categories = new ArrayList<>();
+                        list = categories;
                         getView().onCategoriesReady(categories);
                     }, throwable -> getView().onError());
         } catch (Exception e) {
@@ -45,9 +60,57 @@ public class TransactionPresenter extends BasePresenter<TransactionPresenter.Vie
         }
     }
 
+    public void onTransactionSave(String amount, String description, int position) {
+        if (amount == null || amount.trim().isEmpty()) {
+            getView().onInputRequired(context.getString(R.string.amount_required));
+            return;
+        }
+
+        if (description == null || description.trim().isEmpty()) {
+            getView().onInputRequired(context.getString(R.string.description_required));
+            return;
+        }
+
+        if (list.size() == 0) {
+            getView().onCategoryIsEmpty();
+            return;
+        }
+
+        double _amount = Double.parseDouble(amount);
+        Category category = list.get(position);
+
+
+        History history = new History(
+                loginUseCase.getCurrentUser().getId(), category.getId(), _amount, category.getName(), new Date(), description
+        );
+        try {
+            transactionUseCase.createHistory(history)
+                    .subscribeOn(Schedulers.io())
+                    .subscribeOn(AndroidSchedulers.mainThread())
+                    .as(AutoDispose.autoDisposable(getView()))
+                    .subscribe(aBoolean -> {
+                        if (aBoolean) {
+                            getView().onSuccess();
+                            return;
+                        }
+                        getView().onError();
+                    }, throwable -> getView().onError());
+        } catch (Exception e) {
+            getView().onError();
+            Log.e(TAG, "createHistory", e);
+        }
+
+    }
+
     public interface View extends BasePresenter.View {
         void onCategoriesReady(List<Category> categories);
 
         void onError();
+
+        void onSuccess();
+
+        void onInputRequired(String string);
+
+        void onCategoryIsEmpty();
     }
 }

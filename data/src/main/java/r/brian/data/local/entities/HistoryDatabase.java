@@ -1,5 +1,9 @@
 package r.brian.data.local.entities;
 
+import androidx.annotation.NonNull;
+
+import java.util.Date;
+
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
@@ -9,12 +13,22 @@ public class HistoryDatabase extends RealmObject {
     private int id;
     private int idUser;
     private int idCategory;
-    private int amount;
+    private double amount;
     private String category_name;
-    private String date_time;
+    private Date date_time;
     private String description;
 
     public HistoryDatabase() {
+    }
+
+    public HistoryDatabase(int id, int idUser, int idCategory, double amount, String category_name, Date date_time, String description) {
+        this.id = id;
+        this.idUser = idUser;
+        this.idCategory = idCategory;
+        this.amount = amount;
+        this.category_name = category_name;
+        this.date_time = date_time;
+        this.description = description;
     }
 
     public void setId(int id) {
@@ -29,7 +43,7 @@ public class HistoryDatabase extends RealmObject {
         this.idCategory = idCategory;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 
@@ -37,7 +51,7 @@ public class HistoryDatabase extends RealmObject {
         this.category_name = category_name;
     }
 
-    public void setDate_time(String date_time) {
+    public void setDate_time(Date date_time) {
         this.date_time = date_time;
     }
 
@@ -57,7 +71,7 @@ public class HistoryDatabase extends RealmObject {
         return idCategory;
     }
 
-    public int getAmount() {
+    public double getAmount() {
         return amount;
     }
 
@@ -65,11 +79,19 @@ public class HistoryDatabase extends RealmObject {
         return category_name;
     }
 
-    public String getDate_time() {
+    public Date getDate_time() {
         return date_time;
     }
 
     public String getDescription() {
         return description;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+
+        return String.format("Id:%s, IdUser:%s, Amount:%s, Date:%s, Category:%s",
+                getId(), getIdUser(), getAmount(), getDate_time(), getCategory_name());
     }
 }

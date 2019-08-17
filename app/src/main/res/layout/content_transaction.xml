@@ -48,6 +48,7 @@
             android:outlineAmbientShadowColor="@color/colorWhite"
             android:shadowColor="@color/colorWhite"
             android:textColorHint="@color/colorWhite"
+            android:inputType="numberDecimal"
             android:textSize="@dimen/text_size_amount" />
     </LinearLayout>
 

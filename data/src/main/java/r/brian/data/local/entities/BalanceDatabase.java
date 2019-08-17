@@ -1,5 +1,7 @@
 package r.brian.data.local.entities;
 
+import java.util.Date;
+
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
@@ -9,9 +11,16 @@ public class BalanceDatabase extends RealmObject {
     private int id;
     private int idUser;
     private double total;
-    private String date;
+    private Date date;
 
     public BalanceDatabase() {
+    }
+
+    public BalanceDatabase(int id, int idUser, double total, Date date) {
+        this.id = id;
+        this.idUser = idUser;
+        this.total = total;
+        this.date = date;
     }
 
     public void setId(int id) {
@@ -26,7 +35,7 @@ public class BalanceDatabase extends RealmObject {
         this.total = total;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
@@ -42,7 +51,7 @@ public class BalanceDatabase extends RealmObject {
         return total;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 }

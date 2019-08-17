@@ -56,4 +56,6 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="create_category">Create category</string>
     <string name="new_category">New Category</string>
+    <string name="amount_required">Amount  required</string>
+    <string name="description_required">Description required</string>
 </resources>

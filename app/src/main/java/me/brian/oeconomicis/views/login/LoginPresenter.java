@@ -44,17 +44,12 @@ public class LoginPresenter extends BasePresenter<LoginPresenter.View> {
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .as(AutoDispose.autoDisposable(getView()))
-                    .subscribe(user -> {
-                        if (user == null) {
-                            getView().onLoginError(context.getString(R.string.user_doesnt_exist));
-                        }else {
-                            getView().onLoginSuccess();
-                        }
-                    }, throwable -> {
-                        getView().onLoginError(context.getString(R.string.login_error));
-                    });
+                    .subscribe(
+                            user -> getView().onLoginSuccess(),
+                            throwable -> getView().onLoginError(context.getString(R.string.user_doesnt_exist))
+                    );
         } catch (Exception e) {
-            getView().onLoginError(context.getString(R.string.login_error));
+            getView().onLoginError(context.getString(R.string.user_doesnt_exist));
             Log.e(TAG, "Login", e);
         }
 

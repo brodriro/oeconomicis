@@ -1,19 +1,30 @@
 package me.brian.domain.entities;
 
+import java.util.Date;
+
 public class History {
 
     private int id;
     private int idUser;
     private int idCategory;
-    private int amount;
+    private double amount;
     private String category_name;
-    private String date_time;
+    private Date date_time;
     private String description;
 
     public History() {
     }
 
-    public History(int id, int idUser, int idCategory, int amount, String category_name, String date_time, String description) {
+    public History(int idUser, int idCategory, double amount, String category_name, Date date_time, String description) {
+        this.idUser = idUser;
+        this.idCategory = idCategory;
+        this.amount = amount;
+        this.category_name = category_name;
+        this.date_time = date_time;
+        this.description = description;
+    }
+
+    public History(int id, int idUser, int idCategory, double amount, String category_name, Date date_time, String description) {
         this.id = id;
         this.idUser = idUser;
         this.idCategory = idCategory;
@@ -35,7 +46,7 @@ public class History {
         this.idCategory = idCategory;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 
@@ -43,7 +54,7 @@ public class History {
         this.category_name = category_name;
     }
 
-    public void setDate_time(String date_time) {
+    public void setDate_time(Date date_time) {
         this.date_time = date_time;
     }
 
@@ -63,7 +74,7 @@ public class History {
         return idCategory;
     }
 
-    public int getAmount() {
+    public double getAmount() {
         return amount;
     }
 
@@ -71,7 +82,7 @@ public class History {
         return category_name;
     }
 
-    public String getDate_time() {
+    public Date getDate_time() {
         return date_time;
     }
 
