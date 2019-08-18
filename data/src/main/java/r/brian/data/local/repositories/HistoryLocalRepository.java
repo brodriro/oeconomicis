@@ -2,8 +2,7 @@ package r.brian.data.local.repositories;
 
 import android.util.Log;
 
-import java.util.Calendar;
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -11,8 +10,12 @@ import javax.inject.Inject;
 import io.reactivex.Single;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
+import io.realm.RealmResults;
+import io.realm.Sort;
 import me.brian.domain.entities.History;
+import me.brian.domain.entities.User;
 import me.brian.domain.repositories.HistoryDatabaseRepository;
+import r.brian.data.Utils;
 import r.brian.data.local.entities.BalanceDatabase;
 import r.brian.data.local.entities.HistoryDatabase;
 
@@ -26,8 +29,17 @@ public class HistoryLocalRepository implements HistoryDatabaseRepository {
     }
 
     @Override
-    public Single<List<History>> getHistory(int idUser, Date date) {
-        return null;
+    public Single<List<History>> getHistory(User user) {
+        try (Realm realmInstance = Realm.getInstance(realmConfiguration)) {
+            List<HistoryDatabase> results = realmInstance.where(HistoryDatabase.class)
+                    .equalTo("idUser", user.getId()).and()
+                    .greaterThanOrEqualTo("date_time", Utils.getDateMonth())
+                    .sort("date_time", Sort.DESCENDING)
+                    .findAll();
+            if (results == null) return Single.just(new ArrayList<>());
+
+            return Single.just(HistoryDatabase.toHistores(results));
+        }
     }
 
     @Override
@@ -42,47 +54,42 @@ public class HistoryLocalRepository implements HistoryDatabaseRepository {
 
             realmInstance.executeTransaction(realm -> realmInstance.insertOrUpdate(historyDatabase));
 
-
             //GET TOTAL AMOUNT OF MONTH
-            double totalAmount = realmInstance.where(HistoryDatabase.class)
-                    .equalTo("id", nextId)
-                    .greaterThanOrEqualTo("date_time", getDateMonth())
-                    .findAll().sum("amount").doubleValue();
+            RealmResults<HistoryDatabase> tmpResult = realmInstance.where(HistoryDatabase.class)
+                    .equalTo("idUser", history.getIdUser() )
+                    .greaterThanOrEqualTo("date_time", Utils.getDateMonth())
+                    .findAll();
+            Log.e("RESULTS as json", tmpResult.asJSON());
+            double totalAmount = tmpResult.sum("amount").doubleValue();
+            Log.e("SUM", totalAmount+ "") ;
 
             //GET NEXT ID FOR BALANCE TABLE
             Number nIdBalance = realmInstance.where(BalanceDatabase.class).max("id");
             int idBalance = (nIdBalance == null) ? 0 : nIdBalance.intValue() + 1;
 
+
+
             //GET BALANCE RECORD OF MONTH
             BalanceDatabase balanceDatabase = realmInstance.where(BalanceDatabase.class)
-                    .equalTo("date", getDateMonth())
-                    .equalTo("idUser", history.getIdUser())
-                    .findFirst();
+                    .equalTo("idUser", history.getIdUser()).and()
+                    .greaterThanOrEqualTo("date", Utils.getDateMonth())
+                    .findFirstAsync();
 
             //SET NEW AMOUNT OF MONTH
             if (balanceDatabase == null) {
-                balanceDatabase = new BalanceDatabase(idBalance, history.getIdUser(), totalAmount, getDateMonth());
+                balanceDatabase = new BalanceDatabase(idBalance, history.getIdUser(), totalAmount, Utils.getDateMonth());
             }
-            balanceDatabase.setTotal(totalAmount);
+
 
             //UPDATE RECORD
             BalanceDatabase finalBalanceDatabase = balanceDatabase;
-            realmInstance.executeTransaction(realm -> realm.insertOrUpdate(finalBalanceDatabase));
+            realmInstance.executeTransaction(realm -> {
+                finalBalanceDatabase.setTotal(totalAmount);
+                realm.insertOrUpdate(finalBalanceDatabase);
+            });
 
-            String demo = realmInstance.where(BalanceDatabase.class).findAll().asJSON();
-            Log.e("ALL BALANCE", demo);
             return Single.just(true);
         }
     }
 
-    private Date getDateMonth() {
-        Calendar calendar = Calendar.getInstance();
-        calendar.get(Calendar.MONTH);
-        calendar.get(Calendar.YEAR);
-        calendar.set(Calendar.DAY_OF_MONTH, 1);
-        calendar.set(Calendar.HOUR_OF_DAY, 0);
-        calendar.set(Calendar.MINUTE, 0);
-        calendar.set(Calendar.SECOND, 0);
-        return calendar.getTime();
-    }
 }

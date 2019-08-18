@@ -3,11 +3,13 @@ package me.brian.domain.usecases;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
 import io.reactivex.Single;
 import me.brian.domain.entities.Category;
 import me.brian.domain.repositories.CategoryDatabaseRepository;
 
+@Singleton
 public class CategoryUseCase {
 
     @Inject

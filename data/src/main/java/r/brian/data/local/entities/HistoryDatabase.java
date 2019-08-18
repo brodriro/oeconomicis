@@ -2,10 +2,13 @@ package r.brian.data.local.entities;
 
 import androidx.annotation.NonNull;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
+import me.brian.domain.entities.History;
 
 public class HistoryDatabase extends RealmObject {
 
@@ -85,6 +88,19 @@ public class HistoryDatabase extends RealmObject {
 
     public String getDescription() {
         return description;
+    }
+
+    public History toHistory() {
+        return new History(
+                getId(), getIdUser(), getIdCategory(), getAmount(), getCategory_name(), getDate_time(), getDescription()
+        );
+    }
+    public static List<History> toHistores(List<HistoryDatabase> list){
+        List<History> mList = new ArrayList<>();
+
+        for (HistoryDatabase row : list) mList.add(row.toHistory());
+
+        return mList;
     }
 
     @NonNull

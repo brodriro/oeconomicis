@@ -6,8 +6,10 @@ import android.util.Log;
 import com.uber.autodispose.AutoDispose;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 import javax.inject.Inject;
 
@@ -81,7 +83,8 @@ public class TransactionPresenter extends BasePresenter<TransactionPresenter.Vie
 
 
         History history = new History(
-                loginUseCase.getCurrentUser().getId(), category.getId(), _amount, category.getName(), new Date(), description
+                loginUseCase.getCurrentUser().getId(), category.getId(), _amount,
+                category.getName(), new Date(), description
         );
         try {
             transactionUseCase.createHistory(history)

@@ -1,16 +1,18 @@
 package me.brian.domain.entities;
 
+import java.util.Date;
+
 public class Balance {
 
     private int id;
     private int idUser;
     private double total;
-    private String date;
+    private Date date;
 
     public Balance() {
     }
 
-    public Balance(int id, int idUser, double total, String date) {
+    public Balance(int id, int idUser, double total, Date date) {
         this.id = id;
         this.idUser = idUser;
         this.total = total;
@@ -29,7 +31,7 @@ public class Balance {
         this.total = total;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
@@ -45,7 +47,7 @@ public class Balance {
         return total;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 }

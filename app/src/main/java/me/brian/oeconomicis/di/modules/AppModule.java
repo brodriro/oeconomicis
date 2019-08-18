@@ -10,9 +10,12 @@ import dagger.Module;
 import dagger.Provides;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
+import io.realm.rx.RealmObservableFactory;
+import me.brian.domain.repositories.BalanceDatabaseRepository;
 import me.brian.domain.repositories.CategoryDatabaseRepository;
 import me.brian.domain.repositories.HistoryDatabaseRepository;
 import me.brian.domain.repositories.UserDatabaseRepository;
+import r.brian.data.local.repositories.BalanceLocalRepository;
 import r.brian.data.local.repositories.CategoryLocalRepository;
 import r.brian.data.local.repositories.HistoryLocalRepository;
 import r.brian.data.local.repositories.UserLocalRepository;
@@ -39,7 +42,13 @@ public class AppModule {
 
     @Provides
     @Singleton
-    HistoryDatabaseRepository providesHistoryDatabaseRepository(HistoryLocalRepository historyLocalRepository){
+    BalanceDatabaseRepository providesBalanceDatabaseRepository(BalanceLocalRepository balanceLocalRepository) {
+        return balanceLocalRepository;
+    }
+
+    @Provides
+    @Singleton
+    HistoryDatabaseRepository providesHistoryDatabaseRepository(HistoryLocalRepository historyLocalRepository) {
         return historyLocalRepository;
     }
 
@@ -49,6 +58,7 @@ public class AppModule {
         Realm.init(context);
         RealmConfiguration.Builder builder = new RealmConfiguration.Builder();
         builder.name("oeconomicis");
+        builder.rxFactory(new RealmObservableFactory());
         return builder.build();
     }
 }

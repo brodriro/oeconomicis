@@ -13,14 +13,21 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.navigation.NavigationView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import me.brian.domain.entities.Balance;
+import me.brian.domain.entities.History;
 import me.brian.domain.entities.User;
 import me.brian.oeconomicis.R;
 import me.brian.oeconomicis.views.BaseActivity;
@@ -43,6 +50,14 @@ public class HomeActivity extends BaseActivity
     DrawerLayout drawer;
     @BindView(R.id.nav_view)
     NavigationView navigationView;
+    @BindView(R.id.total_amount)
+    TextView totalAmount;
+    @BindView(R.id.recyclerViewCategories)
+    RecyclerView recyclerViewCategories;
+    @BindView(R.id.recyclerViewHistory)
+    RecyclerView recyclerViewHistory;
+
+    private HistoryAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,8 +66,23 @@ public class HomeActivity extends BaseActivity
 
         ButterKnife.bind(this);
 
-        homePresenter.start();
         initMenu();
+        setUpViews();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        homePresenter.start();
+    }
+
+    private void setUpViews() {
+        adapter = new HistoryAdapter(getApplicationContext(), new ArrayList<>());
+        recyclerViewHistory.setAdapter(adapter);
+        RecyclerView.LayoutManager layoutManager =
+                new LinearLayoutManager(this);
+        recyclerViewHistory.setLayoutManager(layoutManager);
+        recyclerViewHistory.setHasFixedSize(true);
     }
 
     private void initMenu() {
@@ -106,5 +136,21 @@ public class HomeActivity extends BaseActivity
         TextView title = (TextView) headerLayout.findViewById(R.id.nav_view_username);
         title.setText(String.format("%s %s", user.getName(), user.getLastname()));
         Log.e(TAG, user.toString());
+    }
+
+    @Override
+    public void onBalanceIsReady(Balance balance) {
+        totalAmount.setText(String.valueOf(balance.getTotal()));
+    }
+
+    @Override
+    public void onError() {
+
+    }
+
+    @Override
+    public void onHistoryComplete(List<History> histories) {
+        Log.e("onHistoryComplete", histories.size()+ "");
+        adapter.setList(histories);
     }
 }

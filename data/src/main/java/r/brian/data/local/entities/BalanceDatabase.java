@@ -1,9 +1,13 @@
 package r.brian.data.local.entities;
 
+import androidx.annotation.NonNull;
+
 import java.util.Date;
 
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
+import me.brian.domain.entities.Balance;
+import me.brian.domain.entities.User;
 
 public class BalanceDatabase extends RealmObject {
 
@@ -53,5 +57,21 @@ public class BalanceDatabase extends RealmObject {
 
     public Date getDate() {
         return date;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return String.format("id:%s, idUser:%s, total:%s, date:%s",
+                getId(), getIdUser(), getTotal(), getDate());
+    }
+
+    public Balance toBalance() {
+        return new Balance(
+                getId(),
+                getIdUser(),
+                getTotal(),
+                getDate()
+        );
     }
 }
