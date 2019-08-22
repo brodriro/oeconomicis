@@ -10,6 +10,7 @@ import io.realm.RealmConfiguration;
 import io.realm.RealmResults;
 import me.brian.domain.entities.Category;
 import me.brian.domain.repositories.CategoryDatabaseRepository;
+import r.brian.data.Utils;
 import r.brian.data.local.entities.CategoryDatabase;
 
 public class CategoryLocalRepository implements CategoryDatabaseRepository {
@@ -34,7 +35,7 @@ public class CategoryLocalRepository implements CategoryDatabaseRepository {
     public Single<List<Category>> createCategory(final Category category) throws Exception {
         try (Realm realmInstance = Realm.getInstance(realmConfiguration)) {
             Number id = realmInstance.where(CategoryDatabase.class).max("id");
-            int nextId = (id != null) ? id.intValue() + 1 : 0;
+            int nextId = Utils.generateId(id);
             category.setId(nextId);
             realmInstance.executeTransaction(realm -> realm.insertOrUpdate(new CategoryDatabase(category)));
 

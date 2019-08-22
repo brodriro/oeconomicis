@@ -36,4 +36,8 @@ public class Utils {
        // Log.e("UTILS DATE",date.toString());
         return date;
     }
+
+    public static int generateId(Number nIdBalance) {
+        return (nIdBalance == null) ? 1 : nIdBalance.intValue() + 1;
+    }
 }

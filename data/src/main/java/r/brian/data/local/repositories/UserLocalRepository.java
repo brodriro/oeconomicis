@@ -7,6 +7,7 @@ import io.realm.Realm;
 import io.realm.RealmConfiguration;
 import me.brian.domain.entities.User;
 import me.brian.domain.repositories.UserDatabaseRepository;
+import r.brian.data.Utils;
 import r.brian.data.local.entities.UserDatabase;
 
 public class UserLocalRepository implements UserDatabaseRepository {
@@ -51,7 +52,7 @@ public class UserLocalRepository implements UserDatabaseRepository {
     public Single<User> createUser(User user) throws Exception {
         try (Realm realmInstance = Realm.getInstance(realmConfiguration)) {
             Number id = realmInstance.where(UserDatabase.class).max("id");
-            int nextId = (id != null) ? id.intValue() + 1 : 0;
+            int nextId = Utils.generateId(id);
             user.setId(nextId);
             realmInstance.executeTransaction(realm -> realm.insertOrUpdate(new UserDatabase(user)));
             return Single.just(user);

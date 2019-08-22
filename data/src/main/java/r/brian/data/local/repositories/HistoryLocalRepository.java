@@ -45,49 +45,47 @@ public class HistoryLocalRepository implements HistoryDatabaseRepository {
     @Override
     public Single<Boolean> createHistory(History history) {
         try (Realm realmInstance = Realm.getInstance(realmConfiguration)) {
+            realmInstance.beginTransaction();
+
             Number id = realmInstance.where(HistoryDatabase.class).max("id");
-            int nextId = (id != null) ? id.intValue() + 1 : 0;
+            int nextId = Utils.generateId(id);
+
             HistoryDatabase historyDatabase = new HistoryDatabase(
                     nextId, history.getIdUser(), history.getIdCategory(), history.getAmount(),
                     history.getCategory_name(), history.getDate_time(), history.getDescription()
             );
+            realmInstance.insertOrUpdate(historyDatabase);
 
-            realmInstance.executeTransaction(realm -> realmInstance.insertOrUpdate(historyDatabase));
 
             //GET TOTAL AMOUNT OF MONTH
             RealmResults<HistoryDatabase> tmpResult = realmInstance.where(HistoryDatabase.class)
-                    .equalTo("idUser", history.getIdUser() )
+                    .equalTo("idUser", history.getIdUser())
                     .greaterThanOrEqualTo("date_time", Utils.getDateMonth())
                     .findAll();
-            Log.e("RESULTS as json", tmpResult.asJSON());
+
             double totalAmount = tmpResult.sum("amount").doubleValue();
-            Log.e("SUM", totalAmount+ "") ;
+            Log.e("SUM", totalAmount + "");
 
             //GET NEXT ID FOR BALANCE TABLE
             Number nIdBalance = realmInstance.where(BalanceDatabase.class).max("id");
-            int idBalance = (nIdBalance == null) ? 0 : nIdBalance.intValue() + 1;
-
+            int idBalance = Utils.generateId(nIdBalance);
 
 
             //GET BALANCE RECORD OF MONTH
             BalanceDatabase balanceDatabase = realmInstance.where(BalanceDatabase.class)
                     .equalTo("idUser", history.getIdUser()).and()
                     .greaterThanOrEqualTo("date", Utils.getDateMonth())
-                    .findFirstAsync();
+                    .findFirst();
 
             //SET NEW AMOUNT OF MONTH
             if (balanceDatabase == null) {
                 balanceDatabase = new BalanceDatabase(idBalance, history.getIdUser(), totalAmount, Utils.getDateMonth());
             }
-
-
             //UPDATE RECORD
-            BalanceDatabase finalBalanceDatabase = balanceDatabase;
-            realmInstance.executeTransaction(realm -> {
-                finalBalanceDatabase.setTotal(totalAmount);
-                realm.insertOrUpdate(finalBalanceDatabase);
-            });
+            balanceDatabase.setTotal(totalAmount);
+            realmInstance.insertOrUpdate(balanceDatabase);
 
+            realmInstance.commitTransaction();
             return Single.just(true);
         }
     }
