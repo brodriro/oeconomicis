@@ -1,16 +1,16 @@
 <resources>
     <string name="app_name">Economicis</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Username</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
+    <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
+    <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
+    <string name="nav_header_title" translatable="false">Username</string>
+    <string name="nav_header_subtitle" translatable="false">android.studio@android.com</string>
+    <string name="nav_header_desc" translatable="false">Navigation header</string>
     <string name="action_settings">Settings</string>
 
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
-    <string name="menu_tools">Tools</string>
+    <string name="menu_slideshow" translatable="false">Slideshow</string>
+    <string name="menu_tools" translatable="false">Tools</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
     <string name="login_user">User</string>
@@ -18,9 +18,9 @@
     <string name="login">Login</string>
     <string name="menu_categories">Categories</string>
     <string name="total_spend">Total Spend</string>
-    <string name="total_spend_number">00.00</string>
-    <string name="category_foods">Foods</string>
-    <string name="category_concept">McDonals</string>
+    <string name="total_spend_number" translatable="false">00.00</string>
+    <string name="category_foods" translatable="false">Foods</string>
+    <string name="category_concept" translatable="false">McDonals</string>
     <string name="last_transactions">LATEST TRANSACTION</string>
     <string name="history_transaction">History</string>
     <string name="title_activity_transaction">New Transaction</string>
@@ -51,9 +51,9 @@
     <string name="menu_new_category">New Category</string>
     <string name="menu_new_assignment">New Assigment</string>
     <string name="error">An error occurred.</string>
-    <string name="title_activity_category">CategoryActivity</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_category" translatable="false">CategoryActivity</string>
+    <string name="dummy_button" translatable="false">Dummy Button</string>
+    <string name="dummy_content" translatable="false">DUMMY\nCONTENT</string>
     <string name="create_category">Create category</string>
     <string name="new_category">New Category</string>
     <string name="amount_required">Amount  required</string>
