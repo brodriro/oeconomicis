@@ -1,7 +1,5 @@
 package r.brian.data.local.repositories;
 
-import android.util.Log;
-
 import javax.inject.Inject;
 
 import io.reactivex.Single;
@@ -29,12 +27,11 @@ public class BalanceLocalRepository implements BalanceDatabaseRepository {
             BalanceDatabase balanceDatabase = realm.where(BalanceDatabase.class)
                     .equalTo("idUser", user.getId()).and()
                     .greaterThanOrEqualTo("date", Utils.getDateMonth())
-                    .findFirst();
+                    .findFirstAsync();
 
-            if (balanceDatabase == null) return Single.just(null);
-
-            realm.commitTransaction();
-            return Single.just(balanceDatabase.toBalance());
+            return Single.just(realm.copyFromRealm(balanceDatabase))
+                    .filter(balanceDatabase1 -> balanceDatabase1.isLoaded())
+                    .flatMapSingle(balanceDatabase1 -> Single.just(balanceDatabase1.toBalance()));
         }
     }
 }

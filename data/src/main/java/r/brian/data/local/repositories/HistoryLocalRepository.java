@@ -42,6 +42,11 @@ public class HistoryLocalRepository implements HistoryDatabaseRepository {
         }
     }
 
+    /****
+     * TODO seprar todo en funciones independientes
+     * @param history
+     * @return
+     */
     @Override
     public Single<Boolean> createHistory(History history) {
         try (Realm realmInstance = Realm.getInstance(realmConfiguration)) {
