@@ -1,11 +1,6 @@
-package r.brian.data.local.entities;
+package me.rzknairb.domain.entities;
 
-import io.realm.RealmObject;
-import io.realm.annotations.PrimaryKey;
-import me.rzknairb.domain.entities.User;
-
-public class UserDatabase extends RealmObject {
-    @PrimaryKey
+public class User {
     private int id;
     private String name;
     private String lastname;
@@ -13,36 +8,23 @@ public class UserDatabase extends RealmObject {
     private String username;
     private String password;
 
-    public UserDatabase() {
+    public User() {
     }
 
-    public UserDatabase(int id, String name, String lastname, String age, String username, String password) {
-        this.id = id;
+    public User( String name, String lastname, String age, String username, String password) {
         this.name = name;
         this.lastname = lastname;
         this.age = age;
         this.username = username;
         this.password = password;
     }
-
-    public UserDatabase(User user) {
-        this.setId(user.getId());
-        this.setName(user.getName());
-        this.setPassword(user.getPassword());
-        this.setUsername(user.getUsername());
-        this.setLastname(user.getLastname());
-        this.setAge(user.getAge());
-    }
-
-    public User toUser() {
-        User user = new User();
-        user.setId(this.getId());
-        user.setName(this.getName());
-        user.setPassword(this.getPassword());
-        user.setUsername(this.getUsername());
-        user.setLastname(this.getLastname());
-        user.setAge(this.getAge());
-        return user;
+    public User(int id, String name, String lastname, String age, String username, String password) {
+        this.id = id;
+        this.name = name;
+        this.lastname = lastname;
+        this.age = age;
+        this.username = username;
+        this.password = password;
     }
 
     public void setLastname(String lastname) {
@@ -91,5 +73,11 @@ public class UserDatabase extends RealmObject {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("ID:%s, FullName:%s, Username:%s, Age:%s, Password:%s",
+                getId(), getName() + " " +getLastname(),getUsername(), getAge(), getPassword());
     }
 }

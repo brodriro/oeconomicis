@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="me.brian.oeconomicis">
+    package="me.rzknairb.oeconomicis">
 
     <application
         android:name=".application.OeconomicisApp"
@@ -19,7 +19,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="me.brian.oeconomicis.views.login.LoginActivity" />
+                android:value="me.rzknairb.oeconomicis.views.login.LoginActivity" />
         </activity>
         <activity
             android:name=".views.transaction.TransactionActivity"
@@ -28,7 +28,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="me.brian.oeconomicis.views.home.HomeActivity" />
+                android:value="me.rzknairb.oeconomicis.views.home.HomeActivity" />
         </activity>
         <activity
             android:name=".views.login.LoginActivity"

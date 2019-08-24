@@ -1,18 +1,9 @@
-package r.brian.data.local.entities;
+package me.rzknairb.domain.entities;
 
-import androidx.annotation.NonNull;
-
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
-import io.realm.RealmObject;
-import io.realm.annotations.PrimaryKey;
-import me.rzknairb.domain.entities.History;
+public class History {
 
-public class HistoryDatabase extends RealmObject {
-
-    @PrimaryKey
     private int id;
     private int idUser;
     private int idCategory;
@@ -21,10 +12,19 @@ public class HistoryDatabase extends RealmObject {
     private Date date_time;
     private String description;
 
-    public HistoryDatabase() {
+    public History() {
     }
 
-    public HistoryDatabase(int id, int idUser, int idCategory, double amount, String category_name, Date date_time, String description) {
+    public History(int idUser, int idCategory, double amount, String category_name, Date date_time, String description) {
+        this.idUser = idUser;
+        this.idCategory = idCategory;
+        this.amount = amount;
+        this.category_name = category_name;
+        this.date_time = date_time;
+        this.description = description;
+    }
+
+    public History(int id, int idUser, int idCategory, double amount, String category_name, Date date_time, String description) {
         this.id = id;
         this.idUser = idUser;
         this.idCategory = idCategory;
@@ -88,26 +88,5 @@ public class HistoryDatabase extends RealmObject {
 
     public String getDescription() {
         return description;
-    }
-
-    public History toHistory() {
-        return new History(
-                getId(), getIdUser(), getIdCategory(), getAmount(), getCategory_name(), getDate_time(), getDescription()
-        );
-    }
-    public static List<History> toHistores(List<HistoryDatabase> list){
-        List<History> mList = new ArrayList<>();
-
-        for (HistoryDatabase row : list) mList.add(row.toHistory());
-
-        return mList;
-    }
-
-    @NonNull
-    @Override
-    public String toString() {
-
-        return String.format("Id:%s, IdUser:%s, Amount:%s, Date:%s, Category:%s",
-                getId(), getIdUser(), getAmount(), getDate_time(), getCategory_name());
     }
 }

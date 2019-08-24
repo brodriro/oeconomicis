@@ -5,9 +5,9 @@ import javax.inject.Inject;
 import io.reactivex.Single;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
-import me.brian.domain.entities.Balance;
-import me.brian.domain.entities.User;
-import me.brian.domain.repositories.BalanceDatabaseRepository;
+import me.rzknairb.domain.entities.Balance;
+import me.rzknairb.domain.entities.User;
+import me.rzknairb.domain.repositories.BalanceDatabaseRepository;
 import r.brian.data.Utils;
 import r.brian.data.local.entities.BalanceDatabase;
 

@@ -1,23 +1,18 @@
-package r.brian.data.local.entities;
+package me.rzknairb.domain.entities;
 
 import java.util.Date;
 
-import io.realm.RealmObject;
-import io.realm.annotations.PrimaryKey;
-import me.rzknairb.domain.entities.Balance;
+public class Balance {
 
-public class BalanceDatabase extends RealmObject {
-
-    @PrimaryKey
     private int id;
     private int idUser;
     private double total;
     private Date date;
 
-    public BalanceDatabase() {
+    public Balance() {
     }
 
-    public BalanceDatabase(int id, int idUser, double total, Date date) {
+    public Balance(int id, int idUser, double total, Date date) {
         this.id = id;
         this.idUser = idUser;
         this.total = total;
@@ -54,14 +49,5 @@ public class BalanceDatabase extends RealmObject {
 
     public Date getDate() {
         return date;
-    }
-
-    public Balance toBalance() {
-        return new Balance(
-                getId(),
-                getIdUser(),
-                getTotal(),
-                getDate()
-        );
     }
 }

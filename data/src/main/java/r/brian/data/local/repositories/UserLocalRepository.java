@@ -5,8 +5,8 @@ import javax.inject.Inject;
 import io.reactivex.Single;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
-import me.brian.domain.entities.User;
-import me.brian.domain.repositories.UserDatabaseRepository;
+import me.rzknairb.domain.entities.User;
+import me.rzknairb.domain.repositories.UserDatabaseRepository;
 import r.brian.data.Utils;
 import r.brian.data.local.entities.UserDatabase;
 

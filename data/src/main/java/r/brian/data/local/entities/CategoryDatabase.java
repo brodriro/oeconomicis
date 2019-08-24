@@ -5,7 +5,7 @@ import java.util.List;
 
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
-import me.brian.domain.entities.Category;
+import me.rzknairb.domain.entities.Category;
 
 public class CategoryDatabase extends RealmObject {
 
