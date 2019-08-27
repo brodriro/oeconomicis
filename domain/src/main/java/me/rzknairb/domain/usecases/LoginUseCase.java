@@ -5,13 +5,13 @@ import javax.inject.Singleton;
 
 import io.reactivex.Single;
 import me.rzknairb.domain.entities.User;
-import me.rzknairb.domain.repositories.UserDatabaseRepository;
+import me.rzknairb.domain.repositories.UserLocalRepositoryImp;
 
 @Singleton
 public class LoginUseCase {
 
     @Inject
-    UserDatabaseRepository userDatabaseRepository;
+    UserLocalRepositoryImp userLocalRepositoryImp;
 
     private User currentUser;
 
@@ -21,18 +21,18 @@ public class LoginUseCase {
 
 
     public Single<Boolean> findUser(String username) throws Exception {
-        return userDatabaseRepository.findUser(username);
+        return userLocalRepositoryImp.findUser(username);
     }
 
     public Single<User> createUser(final User user) throws Exception {
-        return userDatabaseRepository.createUser(user).map(_user ->{
+        return userLocalRepositoryImp.createUser(user).map(_user ->{
             currentUser = _user;
             return _user;
         });
     }
 
     public Single<User> loginUser(String username, String password) throws Exception{
-        return userDatabaseRepository.loginUser(username, password).map(user -> {
+        return userLocalRepositoryImp.loginUser(username, password).map(user -> {
             if (user != null) currentUser = user;
             return user;
         });

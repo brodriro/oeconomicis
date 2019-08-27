@@ -14,12 +14,12 @@ import io.realm.RealmResults;
 import io.realm.Sort;
 import me.rzknairb.domain.entities.History;
 import me.rzknairb.domain.entities.User;
-import me.rzknairb.domain.repositories.HistoryDatabaseRepository;
+import me.rzknairb.domain.repositories.HistoryLocalRepositoryImp;
 import r.brian.data.Utils;
 import r.brian.data.local.entities.BalanceDatabase;
 import r.brian.data.local.entities.HistoryDatabase;
 
-public class HistoryLocalRepository implements HistoryDatabaseRepository {
+public class HistoryLocalRepository implements HistoryLocalRepositoryImp {
 
     private final RealmConfiguration realmConfiguration;
 

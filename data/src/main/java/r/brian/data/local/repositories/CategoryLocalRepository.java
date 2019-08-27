@@ -9,11 +9,11 @@ import io.realm.Realm;
 import io.realm.RealmConfiguration;
 import io.realm.RealmResults;
 import me.rzknairb.domain.entities.Category;
-import me.rzknairb.domain.repositories.CategoryDatabaseRepository;
+import me.rzknairb.domain.repositories.CategoryLocalRepositoryImp;
 import r.brian.data.Utils;
 import r.brian.data.local.entities.CategoryDatabase;
 
-public class CategoryLocalRepository implements CategoryDatabaseRepository {
+public class CategoryLocalRepository implements CategoryLocalRepositoryImp {
 
     private final RealmConfiguration realmConfiguration;
 

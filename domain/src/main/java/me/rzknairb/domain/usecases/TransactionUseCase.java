@@ -5,19 +5,19 @@ import javax.inject.Singleton;
 
 import io.reactivex.Single;
 import me.rzknairb.domain.entities.History;
-import me.rzknairb.domain.repositories.HistoryDatabaseRepository;
+import me.rzknairb.domain.repositories.HistoryLocalRepositoryImp;
 
 @Singleton
 public class TransactionUseCase {
 
     @Inject
-    HistoryDatabaseRepository historyDatabaseRepository;
+    HistoryLocalRepositoryImp historyLocalRepositoryImp;
 
     @Inject
     public TransactionUseCase() {
     }
 
     public Single<Boolean> createHistory(History history) throws Exception {
-        return historyDatabaseRepository.createHistory(history);
+        return historyLocalRepositoryImp.createHistory(history);
     }
 }

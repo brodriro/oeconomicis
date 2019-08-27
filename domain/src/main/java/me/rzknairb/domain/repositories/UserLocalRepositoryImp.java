@@ -3,7 +3,7 @@ package me.rzknairb.domain.repositories;
 import io.reactivex.Single;
 import me.rzknairb.domain.entities.User;
 
-public interface UserDatabaseRepository {
+public interface UserLocalRepositoryImp {
 
     Single<Boolean> findUser(String username) throws Exception;
 

@@ -39,7 +39,6 @@ dependencies {
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.5.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
     implementation 'com.squareup.retrofit2:converter-scalars:2.5.0'
-    implementation group: 'org.json', name: 'json', version: '20180813'
 
     annotationProcessor 'com.google.dagger:dagger-compiler:2.22.1'
 
