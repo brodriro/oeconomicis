@@ -14,17 +14,17 @@ import io.realm.RealmResults;
 import io.realm.Sort;
 import me.rzknairb.domain.entities.History;
 import me.rzknairb.domain.entities.User;
-import me.rzknairb.domain.repositories.HistoryLocalRepositoryImp;
+import me.rzknairb.domain.repositories.HistoryLocalRepository;
 import r.brian.data.Utils;
 import r.brian.data.local.entities.BalanceDatabase;
 import r.brian.data.local.entities.HistoryDatabase;
 
-public class HistoryLocalRepository implements HistoryLocalRepositoryImp {
+public class HistoryLocalRepositoryImp implements HistoryLocalRepository {
 
     private final RealmConfiguration realmConfiguration;
 
     @Inject
-    public HistoryLocalRepository(RealmConfiguration realmConfiguration) {
+    public HistoryLocalRepositoryImp(RealmConfiguration realmConfiguration) {
         this.realmConfiguration = realmConfiguration;
     }
 

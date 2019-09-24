@@ -7,16 +7,16 @@ import io.realm.Realm;
 import io.realm.RealmConfiguration;
 import me.rzknairb.domain.entities.Balance;
 import me.rzknairb.domain.entities.User;
-import me.rzknairb.domain.repositories.BalanceLocalRepositoryImp;
+import me.rzknairb.domain.repositories.BalanceLocalRepository;
 import r.brian.data.Utils;
 import r.brian.data.local.entities.BalanceDatabase;
 
-public class BalanceLocalRepository implements BalanceLocalRepositoryImp {
+public class BalanceLocalRepositoryImp implements BalanceLocalRepository {
 
     private final RealmConfiguration realmConfiguration;
 
     @Inject
-    public BalanceLocalRepository(RealmConfiguration realmConfiguration) {
+    public BalanceLocalRepositoryImp(RealmConfiguration realmConfiguration) {
         this.realmConfiguration = realmConfiguration;
     }
 

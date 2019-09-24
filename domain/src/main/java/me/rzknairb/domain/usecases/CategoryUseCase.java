@@ -7,23 +7,23 @@ import javax.inject.Singleton;
 
 import io.reactivex.Single;
 import me.rzknairb.domain.entities.Category;
-import me.rzknairb.domain.repositories.CategoryLocalRepositoryImp;
+import me.rzknairb.domain.repositories.CategoryLocalRepository;
 
 @Singleton
 public class CategoryUseCase {
 
     @Inject
-    CategoryLocalRepositoryImp categoryLocalRepositoryImp;
+    CategoryLocalRepository categoryLocalRepository;
 
     @Inject
     CategoryUseCase() {
     }
 
     public Single<List<Category>> getAll() throws Exception {
-        return categoryLocalRepositoryImp.getAllCategories();
+        return categoryLocalRepository.getAllCategories();
     }
 
     public Single<List<Category>> createCategory(String category, String code) throws Exception{
-        return categoryLocalRepositoryImp.createCategory(new Category(category, code));
+        return categoryLocalRepository.createCategory(new Category(category, code));
     }
 }

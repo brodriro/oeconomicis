@@ -5,7 +5,7 @@ import java.util.List;
 import io.reactivex.Single;
 import me.rzknairb.domain.entities.Category;
 
-public interface CategoryLocalRepositoryImp {
+public interface CategoryLocalRepository {
 
     Single<List<Category>> getAllCategories() throws Exception;
 

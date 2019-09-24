@@ -9,28 +9,28 @@ import io.reactivex.Single;
 import me.rzknairb.domain.entities.Balance;
 import me.rzknairb.domain.entities.History;
 import me.rzknairb.domain.entities.User;
-import me.rzknairb.domain.repositories.BalanceLocalRepositoryImp;
-import me.rzknairb.domain.repositories.HistoryLocalRepositoryImp;
+import me.rzknairb.domain.repositories.BalanceLocalRepository;
+import me.rzknairb.domain.repositories.HistoryLocalRepository;
 
 @Singleton
 public class HomeUseCase {
 
     @Inject
-    BalanceLocalRepositoryImp balanceLocalRepositoryImp;
+    BalanceLocalRepository balanceLocalRepository;
 
     @Inject
-    HistoryLocalRepositoryImp historyLocalRepositoryImp;
+    HistoryLocalRepository historyLocalRepository;
 
     @Inject
     HomeUseCase() {
     }
 
     public Single<Balance> getBalanceByUser(User user) throws Exception{
-        return balanceLocalRepositoryImp.getBalanceByUser(user);
+        return balanceLocalRepository.getBalanceByUser(user);
     }
 
     public Single<List<History>> getHistory(User user) throws Exception{
-        return historyLocalRepositoryImp.getHistory(user);
+        return historyLocalRepository.getHistory(user);
     }
 
 }

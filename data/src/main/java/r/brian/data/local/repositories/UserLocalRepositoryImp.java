@@ -6,16 +6,16 @@ import io.reactivex.Single;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 import me.rzknairb.domain.entities.User;
-import me.rzknairb.domain.repositories.UserLocalRepositoryImp;
+import me.rzknairb.domain.repositories.UserLocalRepository;
 import r.brian.data.Utils;
 import r.brian.data.local.entities.UserDatabase;
 
-public class UserLocalRepository implements UserLocalRepositoryImp {
+public class UserLocalRepositoryImp implements UserLocalRepository {
 
     private final RealmConfiguration realmConfiguration;
 
     @Inject
-    public UserLocalRepository(RealmConfiguration realmConfiguration) {
+    public UserLocalRepositoryImp(RealmConfiguration realmConfiguration) {
         this.realmConfiguration = realmConfiguration;
     }
 

@@ -9,16 +9,16 @@ import io.realm.Realm;
 import io.realm.RealmConfiguration;
 import io.realm.RealmResults;
 import me.rzknairb.domain.entities.Category;
-import me.rzknairb.domain.repositories.CategoryLocalRepositoryImp;
+import me.rzknairb.domain.repositories.CategoryLocalRepository;
 import r.brian.data.Utils;
 import r.brian.data.local.entities.CategoryDatabase;
 
-public class CategoryLocalRepository implements CategoryLocalRepositoryImp {
+public class CategoryLocalRepositoryImp implements CategoryLocalRepository {
 
     private final RealmConfiguration realmConfiguration;
 
     @Inject
-    public CategoryLocalRepository(RealmConfiguration realmConfiguration) {
+    public CategoryLocalRepositoryImp(RealmConfiguration realmConfiguration) {
         this.realmConfiguration = realmConfiguration;
     }
 

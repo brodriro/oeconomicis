@@ -6,7 +6,7 @@ import io.reactivex.Single;
 import me.rzknairb.domain.entities.History;
 import me.rzknairb.domain.entities.User;
 
-public interface HistoryLocalRepositoryImp {
+public interface HistoryLocalRepository {
 
     Single<List<History>> getHistory(User user);
 

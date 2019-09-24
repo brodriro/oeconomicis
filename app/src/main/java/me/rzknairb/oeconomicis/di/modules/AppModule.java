@@ -11,14 +11,14 @@ import dagger.Provides;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 import io.realm.rx.RealmObservableFactory;
-import me.rzknairb.domain.repositories.BalanceLocalRepositoryImp;
-import me.rzknairb.domain.repositories.CategoryLocalRepositoryImp;
-import me.rzknairb.domain.repositories.HistoryLocalRepositoryImp;
-import me.rzknairb.domain.repositories.UserLocalRepositoryImp;
-import r.brian.data.local.repositories.BalanceLocalRepository;
-import r.brian.data.local.repositories.CategoryLocalRepository;
-import r.brian.data.local.repositories.HistoryLocalRepository;
-import r.brian.data.local.repositories.UserLocalRepository;
+import me.rzknairb.domain.repositories.BalanceLocalRepository;
+import me.rzknairb.domain.repositories.CategoryLocalRepository;
+import me.rzknairb.domain.repositories.HistoryLocalRepository;
+import me.rzknairb.domain.repositories.UserLocalRepository;
+import r.brian.data.local.repositories.BalanceLocalRepositoryImp;
+import r.brian.data.local.repositories.CategoryLocalRepositoryImp;
+import r.brian.data.local.repositories.HistoryLocalRepositoryImp;
+import r.brian.data.local.repositories.UserLocalRepositoryImp;
 
 @Module//(includes = AndroidInjectionModule.class)
 public class AppModule {
@@ -30,26 +30,26 @@ public class AppModule {
 
     @Provides
     @Singleton
-    UserLocalRepositoryImp providesUserDatabaseRepository(UserLocalRepository loginLocalRepository) {
+    UserLocalRepository providesUserDatabaseRepository(UserLocalRepositoryImp loginLocalRepository) {
         return loginLocalRepository;
     }
 
     @Provides
     @Singleton
-    CategoryLocalRepositoryImp providesCategoryDatabaseRepository(CategoryLocalRepository categoryLocalRepository) {
-        return categoryLocalRepository;
+    CategoryLocalRepository providesCategoryDatabaseRepository(CategoryLocalRepositoryImp categoryLocalRepositoryImp) {
+        return categoryLocalRepositoryImp;
     }
 
     @Provides
     @Singleton
-    BalanceLocalRepositoryImp providesBalanceDatabaseRepository(BalanceLocalRepository balanceLocalRepository) {
-        return balanceLocalRepository;
+    BalanceLocalRepository providesBalanceDatabaseRepository(BalanceLocalRepositoryImp balanceLocalRepositoryImp) {
+        return balanceLocalRepositoryImp;
     }
 
     @Provides
     @Singleton
-    HistoryLocalRepositoryImp providesHistoryDatabaseRepository(HistoryLocalRepository historyLocalRepository) {
-        return historyLocalRepository;
+    HistoryLocalRepository providesHistoryDatabaseRepository(HistoryLocalRepositoryImp historyLocalRepositoryImp) {
+        return historyLocalRepositoryImp;
     }
 
     @Singleton
